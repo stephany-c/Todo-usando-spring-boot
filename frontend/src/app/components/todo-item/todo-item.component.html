@@ -1,0 +1,23 @@
+<div class="todo-item" [class.completed]="todo.realizado">
+    <div class="checkbox-wrapper">
+        <input type="checkbox" [checked]="todo.realizado" (change)="onToggle()">
+    </div>
+
+    <div class="todo-content">
+        <h3>{{ todo.nome }}</h3>
+        <p>{{ todo.descricao }}</p>
+    </div>
+
+    <div class="todo-actions">
+        <span class="badge" [ngClass]="'priority-' + todo.prioridade">
+            {{ todo.prioridade === 3 ? 'Alta' : todo.prioridade === 2 ? 'Média' : 'Baixa' }}
+        </span>
+
+        <button (click)="onDelete()" class="btn btn-danger btn-icon" title="Remover">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2m-6 0h6" />
+            </svg>
+        </button>
+    </div>
+</div>

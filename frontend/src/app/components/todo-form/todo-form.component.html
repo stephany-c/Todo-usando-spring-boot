@@ -1,0 +1,43 @@
+<section class="card">
+    <div class="todo-form">
+        <div class="input-group">
+            <label for="todo-name">
+                O que precisa ser feito?
+                @if (submitted()) {
+                @if (!newTodo.nome.trim()) {
+                <span class="error-msg">O nome é obrigatório</span>
+                } @else if (newTodo.nome.length < 3) { <span class="error-msg">Mínimo de 3 caracteres</span>
+                    }
+                    }
+            </label>
+            <input id="todo-name" type="text" [(ngModel)]="newTodo.nome" placeholder="Ex: Finalizar relatório mensal"
+                class="form-control" [class.is-invalid]="submitted() && (newTodo.nome.trim().length < 3)">
+        </div>
+
+        <div class="input-group">
+            <label for="todo-desc">
+                Mais detalhes
+                @if (submitted() && !newTodo.descricao.trim()) {
+                <span class="error-msg">A descrição é obrigatória</span>
+                }
+            </label>
+            <textarea id="todo-desc" [(ngModel)]="newTodo.descricao" placeholder="Descrição da tarefa..." rows="2"
+                [class.is-invalid]="submitted() && !newTodo.descricao.trim()"></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="input-group">
+                <label>Nível de Prioridade</label>
+                <select [(ngModel)]="newTodo.prioridade">
+                    <option [ngValue]="1">Baixa</option>
+                    <option [ngValue]="2">Média</option>
+                    <option [ngValue]="3">Alta</option>
+                </select>
+            </div>
+
+            <button (click)="create()" class="btn btn-primary">
+                <span>Adicionar Tarefa</span>
+            </button>
+        </div>
+    </div>
+</section>

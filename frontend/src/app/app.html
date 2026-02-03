@@ -1,0 +1,11 @@
+<div class="app-container">
+  <header class="header">
+    <h1>Todo Flow</h1>
+    <p>Organize suas tarefas de forma profissional</p>
+  </header>
+
+  <app-todo-form (addTodo)="onAddTodo($event)"></app-todo-form>
+
+  <app-todo-list [todos]="todos()" (toggleTodo)="onToggleTodo($event)"
+    (deleteTodo)="onDeleteTodo($event)"></app-todo-list>
+</div>

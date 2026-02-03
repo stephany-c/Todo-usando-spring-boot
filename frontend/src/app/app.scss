@@ -1,0 +1,225 @@
+$primary: #6366f1;
+$primary-hover: #4f46e5;
+$bg-body: #f8fafc;
+$bg-card: #ffffff;
+$text-main: #1e293b;
+$text-secondary: #64748b;
+$border: #e2e8f0;
+$success: #10b981;
+$danger: #ef4444;
+$warning: #f59e0b;
+$radius: 12px;
+$shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary: #{$primary};
+    --radius: #{$radius};
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.header {
+    margin-bottom: 32px;
+    text-align: center;
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $text-main;
+        letter-spacing: -0.025em;
+        margin-bottom: 8px;
+    }
+
+    p {
+        color: $text-secondary;
+        font-size: 1.125rem;
+    }
+}
+
+.card {
+    background: $bg-card;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    border: 1px solid $border;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.todo-form {
+    display: grid;
+    gap: 16px;
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: $text-main;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 10px 12px;
+            border: 1px solid $border;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            font-family: inherit;
+
+            &:focus {
+                outline: none;
+                border-color: $primary;
+                box-shadow: 0 0 0 3px rgba($primary, 0.1);
+            }
+        }
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 16px;
+        align-items: flex-end;
+    }
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &-primary {
+        background: $primary;
+        color: white;
+
+        &:hover {
+            background: $primary-hover;
+            transform: translateY(-1px);
+        }
+    }
+
+    &-danger {
+        background: transparent;
+        color: $danger;
+
+        &:hover {
+            background: rgba($danger, 0.1);
+        }
+    }
+
+    &-icon {
+        padding: 8px;
+        border-radius: 6px;
+    }
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: $bg-card;
+    border-radius: $radius;
+    border: 1px solid $border;
+    transition: all 0.2s;
+
+    &:hover {
+        border-color: $primary;
+        transform: translateX(4px);
+    }
+
+    &.completed {
+        background: #f1f5f9;
+
+        .todo-content {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+    }
+
+    .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+
+        input {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+
+    .todo-content {
+        flex: 1;
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: $text-main;
+            margin: 0;
+        }
+
+        p {
+            font-size: 0.875rem;
+            color: $text-secondary;
+            margin: 4px 0 0;
+        }
+    }
+
+    .todo-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &.priority-1 {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    &.priority-2 {
+        background: #fef9c3;
+        color: #854d0e;
+    }
+
+    &.priority-3 {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+}
+
+@media (max-width: 640px) {
+    .todo-form .form-row {
+        grid-template-columns: 1fr;
+    }
+}

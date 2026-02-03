@@ -1,0 +1,35 @@
+@use '../../app.scss' as theme;
+
+.todo-form {
+    gap: 16px;
+}
+
+.error-msg {
+    color: #ef4444; // $danger color
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 8px;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+input.is-invalid,
+textarea.is-invalid {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2;
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

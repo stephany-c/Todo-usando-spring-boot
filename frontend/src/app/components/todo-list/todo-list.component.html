@@ -1,0 +1,9 @@
+<section class="todo-list">
+    @for (todo of todos; track todo.id) {
+    <app-todo-item [todo]="todo" (toggle)="toggleTodo.emit($event)" (delete)="deleteTodo.emit($event)"></app-todo-item>
+    } @empty {
+    <div class="card" style="text-align: center; color: #64748b;">
+        <p>Nenhuma tarefa agendada. Que tal começar agora?</p>
+    </div>
+    }
+</section>

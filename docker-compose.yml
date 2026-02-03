@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./todolist
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:h2:mem:testdb
+      - SPRING_PROFILES_ACTIVE=dev
+
+  frontend:
+    build: ./frontend/frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
